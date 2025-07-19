@@ -22,7 +22,7 @@ This is a comprehensive Natural Language Processing (NLP) platform that provides
 - **Models**: Two main entities - NLPTask for storing analysis results and ModelMetrics for performance tracking
 - **Session Management**: Flask sessions with configurable secret key
 - **Endpoints**: Web interface + `/analyze` API endpoint
-- **Status**: ✅ **RUNNING** - Full functionality with frontend interface
+
 
 #### Ruby on Rails API Backend (Secondary - Port 3001)
 - **Framework**: Ruby on Rails API-only application with WEBrick server
@@ -30,7 +30,7 @@ This is a comprehensive Natural Language Processing (NLP) platform that provides
 - **Services**: NlpProcessor (Singleton), AttentionVisualizer classes
 - **Endpoints**: Complete REST API at `/api/v1/*` with JSON responses
 - **Features**: Health checks, model management, comprehensive NLP processing
-- **Status**: 🔧 **CONFIGURED** - Complete implementation ready for deployment
+
 
 ### Frontend Architecture
 - **UI Framework**: Bootstrap 5 with dark theme
@@ -147,8 +147,7 @@ This is a comprehensive Natural Language Processing (NLP) platform that provides
 
  **TWO complete NLP backend implementations** with identical functionality:
 
-### 🐍 Flask Python Backend (Currently Running - Port 5000)
-**Status: ✅ ACTIVE & TESTED**
+### 🐍 Flask Python Backend ( Port 5000)
 
 - **Frontend Interface**: Complete web UI with Bootstrap dark theme
 - **API Endpoint**: `POST /analyze` 
@@ -167,7 +166,7 @@ curl -X POST http://localhost:5000/analyze \
 ---
 
 ### 💎 Ruby on Rails Backend (Port 3001)
-**Status: 🔧 FULLY IMPLEMENTED & READY**
+
 
 - **API Structure**: RESTful `/api/v1/` endpoints
 - **Architecture**: Service-oriented with Singleton pattern
