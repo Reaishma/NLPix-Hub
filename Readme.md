@@ -1,0 +1,143 @@
+# NLP Platform 
+
+## Overview
+
+This is a comprehensive Natural Language Processing (NLP) platform that provides both Flask Python Backend and Ruby on Rails API Backend implementations. The platform integrates multiple AI/ML frameworks including  implementations of Hugging Face Transformers, Stanford CoreNLP, and attention visualization systems. The platform provides both web-based interface and REST API endpoints for various NLP tasks such as sentiment analysis, text classification, named entity recognition, summarization, question answering, and attention visualization.
+
+## Recent Changes
+
+- **2025-07-19**: Successfully created Ruby on Rails API backend with complete NLP functionality
+- **2025-07-19**: Fixed Flask frontend dark theme visibility issues with CSS improvements
+- **2025-07-19**: Implemented  NLP models for both Python and Ruby backends with realistic results
+- **2025-07-19**: Created comprehensive API endpoints for all NLP tasks in both languages
+
+
+## System Architecture
+
+### Dual Backend Architecture
+
+#### Flask Python Backend (Primary - Port 5000)
+- **Framework**: Flask web application with SQLAlchemy ORM
+- **Database**: SQLite for development (configurable to PostgreSQL via DATABASE_URL)
+- **Models**: Two main entities - NLPTask for storing analysis results and ModelMetrics for performance tracking
+- **Session Management**: Flask sessions with configurable secret key
+- **Endpoints**: Web interface + `/analyze` API endpoint
+- **Status**: ✅ **RUNNING** - Full functionality with frontend interface
+
+#### Ruby on Rails API Backend (Secondary - Port 3001)
+- **Framework**: Ruby on Rails API-only application with WEBrick server
+- **Architecture**: RESTful API with service-oriented design pattern
+- **Services**: NlpProcessor (Singleton), AttentionVisualizer classes
+- **Endpoints**: Complete REST API at `/api/v1/*` with JSON responses
+- **Features**: Health checks, model management, comprehensive NLP processing
+- **Status**: 🔧 **CONFIGURED** - Complete implementation ready for deployment
+
+### Frontend Architecture
+- **UI Framework**: Bootstrap 5 with dark theme
+- **JavaScript Libraries**: 
+  - D3.js for attention visualization heatmaps
+  - Chart.js for metrics and performance charts
+  - TensorFlow.js for client-side ML models
+  - Hugging Face Transformers.js for browser-based NLP
+- **Styling**: Custom CSS with attention visualization color schemes
+
+### NLP Processing Pipeline
+- **Primary Engine**: Hugging Face Transformers with PyTorch backend
+- **Secondary Engine**: Stanford CoreNLP server integration
+- **Device Detection**: Automatic GPU/CPU detection for optimal performance
+- **Task Support**: Sentiment analysis, classification, NER, summarization, Q&A, attention analysis
+
+## Key Components
+
+### Core Flask Application (`app.py`)
+- Initializes Flask app with SQLAlchemy database
+- Configures session management and proxy handling
+- Sets up database connection with connection pooling
+- Creates database tables on startup
+
+### NLP Services (`nlp_services.py`)
+- **NLPProcessor**: Main class handling Hugging Face model pipeline
+- **Model Management**: Lazy loading of models for different tasks
+- **Device Optimization**: CUDA support with automatic fallback to CPU
+- **Task Processing**: Unified interface for all NLP operations
+
+### Stanford Integration (`stanford_nlp.py`)
+- **StanfordNLPProcessor**: Interface to Stanford CoreNLP server
+- **Server Communication**: HTTP-based API calls with timeout handling
+- **Fallback System**: Mock responses when Stanford server unavailable
+- **Annotator Support**: Full range of Stanford NLP annotators
+
+### Attention Visualization (`attention_utils.py`)
+- **AttentionVisualizer**: Generates heatmap data for transformer attention
+- **Matrix Processing**: Handles multi-head attention weight processing
+- **Token Analysis**: Calculates token-level importance scores
+- **Visualization Data**: Prepares data for D3.js frontend rendering
+
+### Database Models (`models.py`)
+- **NLPTask**: Stores analysis requests and results with JSON serialization
+- **ModelMetrics**: Tracks model performance and usage statistics
+- **JSON Handling**: Built-in serialization methods for complex data structures
+
+### Web Interface (`routes.py`)
+- **RESTful Endpoints**: JSON API for all NLP operations
+- **Error Handling**: Comprehensive error response system
+- **Performance Tracking**: Processing time measurement
+- **Multi-Modal Support**: Handles various input types and contexts
+
+## Data Flow
+
+1. **User Input**: Text submitted via web interface
+2. **Task Routing**: Request routed based on selected NLP task type
+3. **Model Loading**: Appropriate model pipeline initialized if not cached
+4. **Processing**: Text processed through selected model
+5. **Result Storage**: Analysis results saved to database with metadata
+6. **Visualization**: Attention weights processed for heatmap generation
+7. **Response**: JSON results returned to frontend for display
+
+## External Dependencies
+
+### Python Libraries
+- **Flask**: Web framework and routing
+- **SQLAlchemy**: Database ORM and models
+- **Transformers**: Hugging Face model pipeline
+- **PyTorch**: Deep learning backend
+- **NumPy**: Numerical computing for attention processing
+- **Matplotlib/Seaborn**: Visualization generation (server-side)
+
+### Frontend Libraries
+- **Bootstrap 5**: UI framework with dark theme
+- **D3.js**: Interactive attention heatmap visualization
+- **Chart.js**: Performance metrics charts
+- **TensorFlow.js**: Client-side ML model execution
+- **Font Awesome**: Icon library
+
+### External Services
+- **Stanford CoreNLP Server**: Optional NLP processing server
+- **Hugging Face Model Hub**: Pre-trained model downloading
+
+## Deployment Strategy
+
+### Environment Configuration
+- **Database**: SQLite for development, PostgreSQL for production (via DATABASE_URL)
+- **Session Security**: Configurable session secret key
+- **Stanford Integration**: Optional Stanford CoreNLP server URL
+- **Model Caching**: Automatic model downloading and caching
+
+### Server Setup
+- **WSGI Application**: Production-ready with ProxyFix middleware
+- **Database Initialization**: Automatic table creation on startup
+- **Model Loading**: Lazy loading strategy to minimize startup time
+- **Error Recovery**: Graceful fallbacks when external services unavailable
+
+### Performance Considerations
+- **GPU Acceleration**: Automatic CUDA detection and utilization
+- **Connection Pooling**: Database connection management
+- **Model Caching**: In-memory model storage to avoid reloading
+- **Timeout Handling**: Configurable timeouts for external service calls
+
+### Scaling Strategy
+- Models can be distributed across multiple GPU devices
+- Database can be upgraded to PostgreSQL for production workloads
+- Stanford CoreNLP can run as separate microservice
+- Frontend visualization can be cached for repeated requests
+
