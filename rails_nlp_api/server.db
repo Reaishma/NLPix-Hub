@@ -1,0 +1,319 @@
+#!/usr/bin/env ruby
+require 'webrick'
+require 'json'
+require_relative 'app/services/nlp_processor'
+require_relative 'app/services/attention_visualizer'
+
+class SimpleNLPServer < WEBrick::HTTPServlet::AbstractServlet
+  def initialize(server)
+    super
+    @nlp_processor = NlpProcessor.instance
+    puts "NLP Server initialized with mock models"
+  end
+  
+  def do_GET(request, response)
+    case request.path
+    when '/'
+      serve_api_info(request, response)
+    when '/api/v1/health'
+      handle_health_check(response)
+    when '/api/v1/models/status'
+      handle_models_status(response)
+    when '/api/v1/models/list'
+      handle_models_list(response)
+    else
+      response.status = 404
+      response.body = { error: 'Endpoint not found' }.to_json
+    end
+    
+    response['Content-Type'] = 'application/json'
+    response['Access-Control-Allow-Origin'] = '*'
+  end
+  
+  def do_POST(request, response)
+    begin
+      body = JSON.parse(request.body) rescue {}
+      
+      case request.path
+      when '/api/v1/sentiment'
+        handle_sentiment_analysis(body, response)
+      when '/api/v1/classification'
+        handle_text_classification(body, response)
+      when '/api/v1/ner'
+        handle_named_entity_recognition(body, response)
+      when '/api/v1/summarization'
+        handle_text_summarization(body, response)
+      when '/api/v1/qa'
+        handle_question_answering(body, response)
+      when '/api/v1/attention'
+        handle_attention_analysis(body, response)
+      when '/api/v1/models/clear_cache'
+        handle_clear_cache(response)
+      else
+        response.status = 404
+        response.body = { error: 'Endpoint not found' }.to_json
+      end
+    rescue => e
+      response.status = 500
+      response.body = { error: "Server error: #{e.message}" }.to_json
+    end
+    
+    response['Content-Type'] = 'application/json'
+    response['Access-Control-Allow-Origin'] = '*'
+  end
+  
+  def do_OPTIONS(request, response)
+    response['Access-Control-Allow-Origin'] = '*'
+    response['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS'
+    response['Access-Control-Allow-Headers'] = 'Content-Type'
+    response.status = 200
+  end
+  
+  private
+  
+  def serve_api_info(request, response)
+    api_info = {
+      name: "NLP Platform Rails API",
+      version: "1.0.0", 
+      description: "Advanced Natural Language Processing API built with Ruby",
+      base_url: "http://#{request.host}:#{request.port}",
+      endpoints: {
+        nlp: {
+          sentiment: "POST /api/v1/sentiment",
+          classification: "POST /api/v1/classification",
+          ner: "POST /api/v1/ner", 
+          summarization: "POST /api/v1/summarization",
+          qa: "POST /api/v1/qa",
+          attention: "POST /api/v1/attention"
+        },
+        system: {
+          health: "GET /api/v1/health",
+          models_status: "GET /api/v1/models/status",
+          models_list: "GET /api/v1/models/list"
+        }
+      },
+      timestamp: Time.now.iso8601
+    }
+    
+    response.body = JSON.pretty_generate(api_info)
+    response.status = 200
+  end
+  
+  def handle_sentiment_analysis(body, response)
+    text = body['text']
+    model_name = body['model_name']
+    
+    if text.nil? || text.empty?
+      response.status = 400
+      response.body = { error: 'Text parameter is required' }.to_json
+      return
+    end
+    
+    start_time = Time.now
+    result = @nlp_processor.analyze_sentiment(text, model_name)
+    processing_time = ((Time.now - start_time) * 1000).round(2)
+    
+    result[:processing_time_ms] = processing_time
+    response.body = { status: 'success', data: result }.to_json
+    response.status = 200
+  end
+  
+  def handle_text_classification(body, response)
+    text = body['text']
+    model_name = body['model_name']
+    labels = body['labels'] || []
+    
+    if text.nil? || text.empty?
+      response.status = 400
+      response.body = { error: 'Text parameter is required' }.to_json
+      return
+    end
+    
+    start_time = Time.now
+    result = @nlp_processor.classify_text(text, model_name, labels)
+    processing_time = ((Time.now - start_time) * 1000).round(2)
+    
+    result[:processing_time_ms] = processing_time
+    response.body = { status: 'success', data: result }.to_json
+    response.status = 200
+  end
+  
+  def handle_named_entity_recognition(body, response)
+    text = body['text']
+    model_name = body['model_name']
+    
+    if text.nil? || text.empty?
+      response.status = 400
+      response.body = { error: 'Text parameter is required' }.to_json
+      return
+    end
+    
+    start_time = Time.now
+    result = @nlp_processor.named_entity_recognition(text, model_name)
+    processing_time = ((Time.now - start_time) * 1000).round(2)
+    
+    result[:processing_time_ms] = processing_time
+    response.body = { status: 'success', data: result }.to_json
+    response.status = 200
+  end
+  
+  def handle_text_summarization(body, response)
+    text = body['text']
+    model_name = body['model_name']
+    max_length = (body['max_length'] || 150).to_i
+    min_length = (body['min_length'] || 30).to_i
+    
+    if text.nil? || text.empty?
+      response.status = 400
+      response.body = { error: 'Text parameter is required' }.to_json
+      return
+    end
+    
+    start_time = Time.now
+    result = @nlp_processor.summarize_text(text, model_name, max_length, min_length)
+    processing_time = ((Time.now - start_time) * 1000).round(2)
+    
+    result[:processing_time_ms] = processing_time
+    response.body = { status: 'success', data: result }.to_json
+    response.status = 200
+  end
+  
+  def handle_question_answering(body, response)
+    question = body['question']
+    context = body['context']
+    model_name = body['model_name']
+    
+    if question.nil? || question.empty? || context.nil? || context.empty?
+      response.status = 400
+      response.body = { error: 'Question and context parameters are required' }.to_json
+      return
+    end
+    
+    start_time = Time.now
+    result = @nlp_processor.question_answering(question, context, model_name)
+    processing_time = ((Time.now - start_time) * 1000).round(2)
+    
+    result[:processing_time_ms] = processing_time
+    response.body = { status: 'success', data: result }.to_json
+    response.status = 200
+  end
+  
+  def handle_attention_analysis(body, response)
+    text = body['text']
+    model_name = body['model_name'] || 'bert-base-uncased'
+    
+    if text.nil? || text.empty?
+      response.status = 400
+      response.body = { error: 'Text parameter is required' }.to_json
+      return
+    end
+    
+    start_time = Time.now
+    result = @nlp_processor.get_attention_weights(text, model_name)
+    
+    # Generate attention visualization data
+    attention_viz = AttentionVisualizer.new
+    heatmap_data = attention_viz.generate_attention_heatmap(text, result[:attention_weights])
+    result[:heatmap_data] = heatmap_data
+    
+    processing_time = ((Time.now - start_time) * 1000).round(2)
+    result[:processing_time_ms] = processing_time
+    
+    response.body = { status: 'success', data: result }.to_json
+    response.status = 200
+  end
+  
+  def handle_health_check(response)
+    health_data = {
+      status: 'healthy',
+      timestamp: Time.now.iso8601,
+      services: {
+        nlp_processor: 'running',
+        models_loaded: @nlp_processor.get_loaded_models.length
+      },
+      version: '1.0.0'
+    }
+    
+    response.body = { status: 'success', data: health_data }.to_json
+    response.status = 200
+  end
+  
+  def handle_models_status(response)
+    loaded_models = @nlp_processor.get_loaded_models
+    
+    model_status = {
+      models_loaded: loaded_models.length,
+      models: loaded_models,
+      device: 'cpu',
+      last_updated: Time.now.iso8601
+    }
+    
+    response.body = { status: 'success', data: model_status }.to_json  
+    response.status = 200
+  end
+  
+  def handle_models_list(response)
+    available_models = {
+      sentiment_analysis: [
+        'cardiffnlp/twitter-roberta-base-sentiment-latest',
+        'nlptown/bert-base-multilingual-uncased-sentiment'
+      ],
+      text_classification: [
+        'facebook/bart-large-mnli',
+        'distilbert-base-uncased-finetuned-sst-2-english'  
+      ],
+      named_entity_recognition: [
+        'dbmdz/bert-large-cased-finetuned-conll03-english',
+        'dslim/bert-base-NER'
+      ],
+      text_summarization: [
+        'facebook/bart-large-cnn',
+        'sshleifer/distilbart-cnn-12-6'
+      ],
+      question_answering: [
+        'distilbert-base-cased-distilled-squad',
+        'deepset/roberta-base-squad2'
+      ]
+    }
+    
+    response.body = { status: 'success', data: available_models }.to_json
+    response.status = 200
+  end
+  
+  def handle_clear_cache(response)
+    @nlp_processor.clear_cache
+    
+    cache_status = {
+      cache_cleared: true,
+      timestamp: Time.now.iso8601,
+      message: 'Model cache has been cleared'
+    }
+    
+    response.body = { status: 'success', data: cache_status }.to_json
+    response.status = 200
+  end
+end
+
+# Start the server
+port = ENV['PORT'] || 3000
+server = WEBrick::HTTPServer.new(Port: port, BindAddress: '0.0.0.0')
+
+# Set up signal handling for graceful shutdown  
+trap('INT') { server.shutdown }
+trap('TERM') { server.shutdown }
+
+# Mount the servlet
+server.mount '/', SimpleNLPServer
+
+puts "Starting Ruby NLP API Server on http://0.0.0.0:#{port}"
+puts "Available endpoints:"
+puts "  GET  / - API documentation"
+puts "  GET  /api/v1/health - Health check"
+puts "  POST /api/v1/sentiment - Sentiment analysis"
+puts "  POST /api/v1/classification - Text classification"
+puts "  POST /api/v1/ner - Named entity recognition"
+puts "  POST /api/v1/summarization - Text summarization"
+puts "  POST /api/v1/qa - Question answering"
+puts "  POST /api/v1/attention - Attention analysis"
+
+server.start
