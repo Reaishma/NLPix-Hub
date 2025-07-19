@@ -238,3 +238,15 @@ All implementations use intelligent mock algorithms that provide realistic resul
 - **Frontend**: ✅ Bootstrap dark theme with fixed visibility issues
 - **Database**: ✅ SQLite with automatic table creation
 
+## Author 🧑‍💻 
+
+**Reaishma N**
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create feature branch: `git checkout -b feature-name`
+3. Make changes to `index.html`
+4. Test in multiple browsers
+5. Submit pull request with detailed description
+
