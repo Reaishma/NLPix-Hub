@@ -6,7 +6,7 @@ This is a comprehensive Natural Language Processing (NLP) platform that provides
 
 ## Live Demo 
 
-[View Live Demo](.   )
+[View Live Demo](https://reaishma.github.io/NLPix-Hub/)
 
 ## System Architecture
 
