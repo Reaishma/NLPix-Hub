@@ -4,13 +4,9 @@
 
 This is a comprehensive Natural Language Processing (NLP) platform that provides both Flask Python Backend and Ruby on Rails API Backend implementations. The platform integrates multiple AI/ML frameworks including  implementations of Hugging Face Transformers, Stanford CoreNLP, and attention visualization systems. The platform provides both web-based interface and REST API endpoints for various NLP tasks such as sentiment analysis, text classification, named entity recognition, summarization, question answering, and attention visualization.
 
-## Recent Changes
+## Live Demo 
 
-- **2025-07-19**: Successfully created Ruby on Rails API backend with complete NLP functionality
-- **2025-07-19**: Fixed Flask frontend dark theme visibility issues with CSS improvements
-- **2025-07-19**: Implemented  NLP models for both Python and Ruby backends with realistic results
-- **2025-07-19**: Created comprehensive API endpoints for all NLP tasks in both languages
-
+[View Live Demo](.   )
 
 ## System Architecture
 
@@ -241,6 +237,10 @@ All implementations use intelligent mock algorithms that provide realistic resul
 ## Author 🧑‍💻 
 
 **Reaishma N**
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🤝 Contributing
 
