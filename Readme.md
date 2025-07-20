@@ -90,6 +90,31 @@ This is a comprehensive Natural Language Processing (NLP) platform that provides
 6. **Visualization**: Attention weights processed for heatmap generation
 7. **Response**: JSON results returned to frontend for display
 
+## NLP Project Highlights
+
+1. *Transformer Models*:
+    - BERT analysis
+    - RoBERTa sentiment analysis
+    - XLNet generation
+    - Transformer Q&A
+2. *NLP Libraries*:
+    - spaCy for dependency parsing, NER, word vectors, and POS tagging
+    - Gensim for topic modeling and document similarity analysis
+    - compromise.js for compromise detection
+3. *Linguistic Analysis*:
+    - Stanford CoreNLP for syntactic parsing, coreference resolution, NER, and sentiment tree analysis
+4. *Deep Learning and Transfer Learning*:
+    - Pre-trained models
+    - Fine-tuning
+    - LSTM analysis
+    - CNN text classification
+5. *Attention Mechanism*:
+    - Self-attention
+    - Multi-head attention
+    - Cross-attention
+    - Attention heatmaps
+
+
 ## External Dependencies
 
 ### Python Libraries
