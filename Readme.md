@@ -4,9 +4,9 @@
 
 This is a comprehensive Natural Language Processing (NLP) platform that provides both Flask Python Backend and Ruby on Rails API Backend implementations. The platform integrates multiple AI/ML frameworks including  implementations of Hugging Face Transformers, Stanford CoreNLP, and attention visualization systems. The platform provides both web-based interface and REST API endpoints for various NLP tasks such as sentiment analysis, text classification, named entity recognition, summarization, question answering, and attention visualization.
 
-## Live Demo 
+# 🚀 Live Demo 
 
-[View Live Demo](https://reaishma.github.io/NLPix-Hub/)
+View Live Demo https://reaishma.github.io/NLPix-Hub/
 
 ## System Architecture
 
