@@ -129,6 +129,9 @@ View Live Demo https://reaishma.github.io/NLPix-Hub/
 - LSTM analysis
 - CNN text classification
 ### 5.Attention Mechanism:
+
+![Attention](https://github.com/Reaishma/NLPix-Hub/blob/main/chrome_screenshot_Sep%205%2C%202025%202_31_13%20PM%20GMT%2B05_30.png)
+
 - Self-attention
 - Multi-head attention
 - Cross-attention
