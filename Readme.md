@@ -117,6 +117,9 @@ View Live Demo https://reaishma.github.io/NLPix-Hub/
 
 - Stanford CoreNLP for syntactic parsing, coreference resolution, NER, and sentiment tree analysis
 ### 4.Deep Learning and Transfer Learning:
+
+![LSTM](https://github.com/Reaishma/NLPix-Hub/blob/main/chrome_screenshot_Sep%205%2C%202025%202_27_51%20PM%20GMT%2B05_30.png)
+
 - Pre-trained models
 - Fine-tuning
 - LSTM analysis
