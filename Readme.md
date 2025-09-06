@@ -112,6 +112,9 @@ View Live Demo https://reaishma.github.io/NLPix-Hub/
 - Gensim for topic modeling and document similarity analysis
 - compromise.js for compromise detection
 ### 3.Linguistic Analysis:
+
+![parasing](https://github.com/Reaishma/NLPix-Hub/blob/main/chrome_screenshot_Sep%205%2C%202025%202_21_20%20PM%20GMT%2B05_30.png)
+
 - Stanford CoreNLP for syntactic parsing, coreference resolution, NER, and sentiment tree analysis
 ### 4.Deep Learning and Transfer Learning:
 - Pre-trained models
