@@ -297,7 +297,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 1. Fork the repository
 2. Create feature branch: `git checkout -b feature-name`
-3. Make changes to `index.html`
-4. Test in multiple browsers
-5. Submit pull request with detailed description
+3. Test in multiple browsers
+4. Submit pull request with detailed description
 
