@@ -94,7 +94,7 @@ View Live Demo https://reaishma.github.io/NLPix-Hub/
 
 ## NLP Project Highlights
 
-1. **Transformer Models**:
+### 1.Transformer Models:
      
 ![hugging faces](https://github.com/Reaishma/NLPix-Hub/blob/main/chrome_screenshot_Sep%205%2C%202025%201_58_41%20PM%20GMT%2B05_30.png)
 - BERT
@@ -102,18 +102,21 @@ View Live Demo https://reaishma.github.io/NLPix-Hub/
 - RoBERTa sentiment analysis
 - XLNet generation
 - Transformer Q&A
-2. **NLP Libraries**:
+### 2.NLP Libraries:
+
+![spacy](https://github.com/Reaishma/NLPix-Hub/blob/main/chrome_screenshot_Sep%205%2C%202025%202_18_47%20PM%20GMT%2B05_30.png)
+
 - spaCy for dependency parsing, NER, word vectors, and POS tagging
 - Gensim for topic modeling and document similarity analysis
 - compromise.js for compromise detection
-3. **Linguistic Analysis**:
+### 3.Linguistic Analysis:
 - Stanford CoreNLP for syntactic parsing, coreference resolution, NER, and sentiment tree analysis
-4. **Deep Learning and Transfer Learning**:
+### 4.Deep Learning and Transfer Learning:
 - Pre-trained models
 - Fine-tuning
 - LSTM analysis
 - CNN text classification
-5. **Attention Mechanism**:
+### 5.Attention Mechanism:
 - Self-attention
 - Multi-head attention
 - Cross-attention
