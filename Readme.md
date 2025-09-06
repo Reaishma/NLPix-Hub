@@ -97,27 +97,27 @@ View Live Demo https://reaishma.github.io/NLPix-Hub/
 1. *Transformer Models*:
      
 ![hugging faces](https://github.com/Reaishma/NLPix-Hub/blob/main/chrome_screenshot_Sep%205%2C%202025%201_58_41%20PM%20GMT%2B05_30.png)
-    - BERT
-    - BERT analysis
-    - RoBERTa sentiment analysis
-    - XLNet generation
-    - Transformer Q&A
+- BERT
+- BERT analysis
+- RoBERTa sentiment analysis
+- XLNet generation
+- Transformer Q&A
 2. *NLP Libraries*:
-    - spaCy for dependency parsing, NER, word vectors, and POS tagging
-    - Gensim for topic modeling and document similarity analysis
-    - compromise.js for compromise detection
+- spaCy for dependency parsing, NER, word vectors, and POS tagging
+- Gensim for topic modeling and document similarity analysis
+- compromise.js for compromise detection
 3. *Linguistic Analysis*:
-    - Stanford CoreNLP for syntactic parsing, coreference resolution, NER, and sentiment tree analysis
+- Stanford CoreNLP for syntactic parsing, coreference resolution, NER, and sentiment tree analysis
 4. *Deep Learning and Transfer Learning*:
-    - Pre-trained models
-    - Fine-tuning
-    - LSTM analysis
-    - CNN text classification
+- Pre-trained models
+- Fine-tuning
+- LSTM analysis
+- CNN text classification
 5. *Attention Mechanism*:
-    - Self-attention
-    - Multi-head attention
-    - Cross-attention
-    - Attention heatmaps
+- Self-attention
+- Multi-head attention
+- Cross-attention
+- Attention heatmaps
 
 
 ## External Dependencies
