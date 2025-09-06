@@ -255,6 +255,9 @@ curl -X POST http://localhost:3001/api/v1/classification \
 Both backends implement the same 6 core NLP tasks:
 
 1. **Sentiment Analysis** - Positive/Negative/Neutral classification
+
+![Sentiment Analysis](https://github.com/Reaishma/NLPix-Hub/blob/main/chrome_screenshot_Sep%205%2C%202025%202_22_36%20PM%20GMT%2B05_30.png)
+
 2. **Text Classification** - Multi-label categorization
 3. **Named Entity Recognition** - Person, Organization, Location, Date, Money extraction
 4. **Text Summarization** - Extractive summarization with compression ratios
