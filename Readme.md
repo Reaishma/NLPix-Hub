@@ -54,6 +54,8 @@ View Live Demo https://reaishma.github.io/NLPix-Hub/
 - Creates database tables on startup
 
 ### NLP Services (`nlp_services.py`)
+
+![pos](https://github.com/Reaishma/NLPix-Hub/blob/main/chrome_screenshot_Sep%205%2C%202025%202_19_38%20PM%20GMT%2B05_30.png)
 - **NLPProcessor**: Main class handling Hugging Face model pipeline
 - **Model Management**: Lazy loading of models for different tasks
 - **Device Optimization**: CUDA support with automatic fallback to CPU
