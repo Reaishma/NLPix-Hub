@@ -95,6 +95,9 @@ View Live Demo https://reaishma.github.io/NLPix-Hub/
 ## NLP Project Highlights
 
 1. *Transformer Models*:
+
+
+![hugging faces](https://github.com/Reaishma/NLPix-Hub/blob/main/chrome_screenshot_Sep%205%2C%202025%201_58_41%20PM%20GMT%2B05_30.png)
     - BERT analysis
     - RoBERTa sentiment analysis
     - XLNet generation
