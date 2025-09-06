@@ -67,7 +67,11 @@ View Live Demo https://reaishma.github.io/NLPix-Hub/
 - **Fallback System**: Mock responses when Stanford server unavailable
 - **Annotator Support**: Full range of Stanford NLP annotators
 
-### Attention Visualization (`attention_utils.py`)
+### Attention Visualization
+ (`attention_utils.py`)
+
+![Attention mechanisms](https://github.com/Reaishma/NLPix-Hub/blob/main/chrome_screenshot_Sep%205%2C%202025%202_29_16%20PM%20GMT%2B05_30.png)
+
 - **AttentionVisualizer**: Generates heatmap data for transformer attention
 - **Matrix Processing**: Handles multi-head attention weight processing
 - **Token Analysis**: Calculates token-level importance scores
