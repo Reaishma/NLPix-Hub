@@ -8,7 +8,7 @@ This is a comprehensive Natural Language Processing (NLP) platform that provides
 
 # 🚀 Access the project 
 
-**Try Live App on**  
+**Try Live App on**  https://nl-pix-hub.vercel.app/
 
 
 **Web interface** https://reaishma.github.io/NLPix-Hub/
