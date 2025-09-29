@@ -6,9 +6,12 @@ This is a comprehensive Natural Language Processing (NLP) platform that provides
 
 ![Overview](https://github.com/Reaishma/NLPix-Hub/blob/main/chrome_screenshot_Sep%205%2C%202025%201_58_14%20PM%20GMT%2B05_30.png)
 
-# 🚀 Live Demo 
+# 🚀 Access the project 
 
-View Live Demo https://reaishma.github.io/NLPix-Hub/
+**Try Live App on**  
+
+
+**Web interface** https://reaishma.github.io/NLPix-Hub/
 
 ## System Architecture
 
